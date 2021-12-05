@@ -1,25 +1,82 @@
-$backgroundColor: #efefef;
-$radius: 40%;
+$mainFont: Verdana, Geneva, Tahoma, sans-serif;
 
 form {
   display: inline-block;
   margin: auto;
-  width: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px #b7a8b6;
+  background-color: #b743af;
+  font-family: $mainFont;
 
   label {
     display: flex;
-    margin: 1rem 0;
+    margin: 1rem auto;
+
+    &.url-label {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+
+      input {
+        width: 230px;
+        height: 2.5rem;
+        background-color: rgba(0, 0, 0, 0.493);
+        color: white;
+        border-radius: 7px;
+        border: none;
+
+        &::placeholder {
+          color: white;
+        }
+      }
+
+      button {
+        background-color: #925f00;
+        height: 2rem;
+        border-radius: 7px;
+        border: none;
+        color: white;
+      }
+    }
 
     &.methods {
       span {
         cursor: pointer;
-        margin-right: 1rem;
-        padding: 0.25rem 0.5rem;
-        background: #ccc;
+        padding: 0.75rem 0.75rem;
+        background: black;
+        border-radius: 10px;
+        margin: 0 5px;
+        color: white;
+      }
 
+      #get {
         &:hover,
         &.active {
-          background: #fff;
+          background-color: blue;
+        }
+      }
+
+      #post {
+        &:hover,
+        &.active {
+          background-color: green;
+        }
+      }
+
+      #put {
+        &:hover,
+        &.active {
+          background-color: rgb(184, 184, 1);
+        }
+      }
+
+      #delete {
+        &:hover,
+        &.active {
+          background-color: red;
         }
       }
     }
