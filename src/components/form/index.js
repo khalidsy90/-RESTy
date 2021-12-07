@@ -1,34 +1,58 @@
-import React from 'react';
 
-import './form.scss';
+import React, { useState } from "react";
 
-export default function form() {
+import "./form.scss";
 
-  const handleSubmit = e => {
+export default function Form(props) {
+  const [method, setMethod] = useState("GET");
+  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon");
+
+  const methodHandle = (e) => {
+    console.log(e.target.id);
+    setMethod(e.target.id.toUpperCase());
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      method:'GET',
-      url: 'https://pokeapi.co/api/v2/pokemon',
-    };
-    this.props.handleApiCall(formData);
-  }
-    return (
-      <>
-        <form onSubmit={handleSubmit}>
-          <label >
-            <span>URL: </span>
-            <input name='url' type='text' />
-            <button type="submit">GO!</button>
-          </label>
-          <label className="methods">
-            <span id="get">GET</span>
-            <span id="post">POST</span>
-            <span id="put">PUT</span>
-            <span id="delete">DELETE</span>
-          </label>
-        </form>
-      </>
-    );
-  
-}
 
+    setUrl(e.target.url.value);
+    const formData = {
+      method: method,
+      url: url,
+    };
+    props.handleApiCall(formData);
+  };
+
+  return (
+    <>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <label className="url-label">
+          <input
+            name="url"
+            type="text"
+            placeholder="ENTER URL"
+            data-testid="url"
+            defaultValue="https://pokeapi.co/api/v2/pokemon"
+          />
+          <button type="submit" data-testid="submit">
+            GO!
+          </button>
+        </label>
+        <label className="methods">
+          <span id="get" onClick={methodHandle}>
+            GET
+          </span>
+          <span id="post" onClick={methodHandle}>
+            POST
+          </span>
+          <span id="put" onClick={methodHandle}>
+            PUT
+          </span>
+          <span id="delete" onClick={methodHandle}>
+            DELETE
+          </span>
+        </label>
+      </form>
+    </>
+  );
+}

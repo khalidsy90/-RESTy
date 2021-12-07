@@ -1,9 +1,15 @@
-import React from 'react';
+import React from "react";
 
-export default function results(props){
-    return (
-      <section>
-        <pre>{props.data ? JSON.stringify(props.data, undefined, 2) : null}</pre>
-      </section>
-    );
+import "./results.scss";
+
+export default function Results(props) {
+  return (
+    <>
+      {props.data && (
+        <pre className="response" data-testid="results">
+          {JSON.stringify(props.data, null, 2)}
+        </pre>
+      )}
+    </>
+  );
 }
