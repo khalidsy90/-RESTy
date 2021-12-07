@@ -20,7 +20,7 @@ export default function Form(props) {
       method: method,
       url: url,
     };
-    props.handleApiCall(formData);
+    props.callApi(formData);
   };
 
   return (
